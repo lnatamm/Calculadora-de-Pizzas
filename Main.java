@@ -89,97 +89,103 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        int controle = 1;
+        boolean rodando = true;
 
-        ArrayList<Pessoa> pessoas = new ArrayList<>();
+        while (rodando) {
 
-        while(controle == 1){
+            boolean controle = true;
 
-            System.out.print("\nNome: ");
+            ArrayList<Pessoa> pessoas = new ArrayList<>();
 
-            String nome = inputString("\nNome: ", sc);
+            while (controle) {
 
-            System.out.print("\nQuantidade de Pedaços(Pizza Salgada): ");
+                System.out.print("\nNome: ");
 
-            int pedacosSalgadas = inputInt("\nQuantidade de Pedaços(Pizza Salgada): ", sc);
+                String nome = inputString("\nNome: ", sc);
 
-            ArrayList<String> votosSalgada;
+                System.out.print("\nQuantidade de Pedaços(Pizza Salgada): ");
 
-            if(pedacosSalgadas > 0) {
+                int pedacosSalgadas = inputInt("\nQuantidade de Pedaços(Pizza Salgada): ", sc);
 
-                System.out.print("\nDigite seus Votos (Pizza Salgada): ");
+                ArrayList<String> votosSalgada;
 
-                votosSalgada = new ArrayList<>(Arrays.asList(inputString("\nDigite seus Votos (Pizza Salgada): ", sc).split(", ")));
+                if (pedacosSalgadas > 0) {
+
+                    System.out.print("\nDigite seus Votos (Pizza Salgada): ");
+
+                    votosSalgada = new ArrayList<>(Arrays.asList(inputString("\nDigite seus Votos (Pizza Salgada): ", sc).split(", ")));
+
+                } else {
+
+                    votosSalgada = new ArrayList<>(Arrays.asList(""));
+
+                }
+
+                System.out.print("\nQuantidade de Pedaços(Pizza Doce): ");
+
+                int pedacosDoces = inputInt("\nQuantidade de Pedaços(Pizza Doce): ", sc);
+
+                ArrayList<String> votosDoce;
+
+                if (pedacosDoces > 0) {
+
+                    System.out.print("\nDigite seus Votos (Pizza Doce): ");
+
+                    votosDoce = new ArrayList<>(Arrays.asList(inputString("\nDigite seus Votos (Pizza Doce): ", sc).split(", ")));
+
+                } else {
+
+                    votosDoce = new ArrayList<>(Arrays.asList(""));
+
+                }
+
+                pessoas.add(new Pessoa(nome, pedacosSalgadas, votosSalgada, pedacosDoces, votosDoce));
+
+                System.out.println("\nDeseja adicionar outra pessoa? (Sim/Não/Yes/No/S/Y/N): ");
+
+                controle = inputResposta("\nDeseja adicionar outra pessoa? (Sim/Não/Yes/No/S/Y/N): ", sc);
 
             }
 
-            else {
-
-                votosSalgada = new ArrayList<>(Arrays.asList(""));
-
-            }
-
-            System.out.print("\nQuantidade de Pedaços(Pizza Doce): ");
-
-            int pedacosDoces = inputInt("\nQuantidade de Pedaços(Pizza Doce): ", sc);
-
-            ArrayList<String> votosDoce;
-
-            if(pedacosDoces > 0) {
-
-                System.out.print("\nDigite seus Votos (Pizza Doce): ");
-
-                votosDoce = new ArrayList<>(Arrays.asList(inputString("\nDigite seus Votos (Pizza Doce): ", sc).split(", ")));
-
-            }
-
-            else {
-
-                votosDoce = new ArrayList<>(Arrays.asList(""));
-
-            }
-
-            pessoas.add(new Pessoa(nome, pedacosSalgadas, votosSalgada, pedacosDoces, votosDoce));
-
-            System.out.print("\nDeseja adicionar outra pessoa? (1: Sim | !1: Não): ");
-
-            controle = inputInt("\nDeseja adicionar outra pessoa? (1: Sim | !1: Não): ", sc);
-
-        }
-
-        Calculadora calculadora = new Calculadora(pessoas);
-        System.out.println("\nTotal de Pedaços Salgadas: " + calculadora.getPedacosSalgadas());
-        System.out.println("Quantidade de Pizzas Salgadas: " + calculadora.getQtdPizzasSalgadas() + "\n");
-        System.out.println("Total de Pedaços Doces: " + calculadora.getPedacosDoces());
-        System.out.println("Quantidade de Pizzas Doces: " + calculadora.getQtdPizzasDoces() + "\n");
-        System.out.println("Pedaços Salgados por Sabores:");
-        System.out.println("-----------------------\n");
-        calculadora.showPizzasSalgadas();
-        System.out.println("Pedaços Doces por Sabores:");
-        System.out.println("-----------------------\n");
-        calculadora.showPizzasDoces();
-        System.out.println("Quantidade de Pizzas Salgadas de cada Sabor");
-        System.out.println("-----------------------\n");
-        calculadora.showRelacaoSalgadas();
-        System.out.println("Quantidade de Pizzas Doces de cada Sabor");
-        System.out.println("-----------------------\n");
-        calculadora.showRelacaoDoces();
-        System.out.println("Preço total: R$" + calculadora.getPrecoTotal());
-        System.out.println("Preço dividido: R$" + calculadora.getPrecoDividido());
-        System.out.println("Preço a pagar: R$" + (calculadora.getPrecoTotal() - calculadora.getPrecoDividido()));
-        System.out.println("O preço está correto? (Sim/Não/Yes/No/S/Y/N)");
-        boolean resposta = inputResposta("O preço está correto?", sc);
-        if(!resposta){
-            System.out.print("\nDigite o novo preço total: ");
-            calculadora.setPrecoTotal(Double.parseDouble(sc.nextLine()));
+            DecimalFormat df = new DecimalFormat("#.00");
+            Calculadora calculadora = new Calculadora(pessoas);
+            System.out.println("\nTotal de Pedaços Salgadas: " + calculadora.getPedacosSalgadas());
+            System.out.println("Quantidade de Pizzas Salgadas: " + calculadora.getQtdPizzasSalgadas() + "\n");
+            System.out.println("Total de Pedaços Doces: " + calculadora.getPedacosDoces());
+            System.out.println("Quantidade de Pizzas Doces: " + calculadora.getQtdPizzasDoces() + "\n");
+//      (Descomente para mostrar quantos para saber quantos pedacos ao todo de cada sabor deram.)
+//      System.out.println("Pedaços Salgados por Sabores:");
+//      System.out.println("-----------------------\n");
+//      calculadora.showPizzasSalgadas();
+//      System.out.println("Pedaços Doces por Sabores:");
+//      System.out.println("-----------------------\n");
+//      calculadora.showPizzasDoces();
+            System.out.println("Quantidade de Pizzas Salgadas de cada Sabor");
+            System.out.println("-----------------------\n");
+            calculadora.showRelacaoSalgadas();
+            System.out.println("Quantidade de Pizzas Doces de cada Sabor");
+            System.out.println("-----------------------\n");
+            calculadora.showRelacaoDoces();
             System.out.println("Preço total: R$" + calculadora.getPrecoTotal());
             System.out.println("Preço dividido: R$" + calculadora.getPrecoDividido());
-            System.out.println("Preço a pagar: R$" + (calculadora.getPrecoTotal() - calculadora.getPrecoDividido()));
+            System.out.println("Preço a pagar: R$" + (Double.parseDouble(df.format(calculadora.getPrecoTotal() - calculadora.getPrecoDividido()).replace(",", "."))));
+            System.out.println("O preço está correto? (Sim/Não/Yes/No/S/Y/N)");
+            boolean resposta = inputResposta("O preço está correto?", sc);
+            if (!resposta) {
+                System.out.print("\nDigite o novo preço total: ");
+                calculadora.setPrecoTotal(Double.parseDouble(sc.nextLine()));
+                System.out.println("Preço total: R$" + calculadora.getPrecoTotal());
+                System.out.println("Preço dividido: R$" + calculadora.getPrecoDividido());
+                System.out.println("Preço a pagar: R$" + (calculadora.getPrecoTotal() - calculadora.getPrecoDividido()));
+            }
+            System.out.println("-----------------------\n");
+            System.out.println("Pessoas:");
+            System.out.println("-----------------------\n");
+            calculadora.showPessoas();
+            System.out.println("Deseja fazer um novo cálculo? (Sim/Não/Yes/No/S/Y/N): ");
+            rodando = inputResposta("Deseja fazer um novo cálculo? (Sim/Não/Yes/No/S/Y/N): ", sc);
+
         }
-        System.out.println("-----------------------\n");
-        System.out.println("Pessoas:");
-        System.out.println("-----------------------\n");
-        calculadora.showPessoas();
 
     }
 

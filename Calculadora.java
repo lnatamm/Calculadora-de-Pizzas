@@ -758,13 +758,34 @@ public class Calculadora {
 
         precoTotal = Double.parseDouble(df.format(precoTotal).replace(",", "."));
 
+        System.out.println();
+
+    }
+
+    private double inputFracao(String frase, Scanner sc){
+
+        double fracao = Double.parseDouble(sc.nextLine());
+        if(!(fracao > 1 || fracao < 0)) {
+            fracao = 1 - fracao;
+            return fracao;
+        }
+        else {
+            System.out.println(frase);
+            return inputFracao(frase, sc);
+        }
+
     }
 
     private void definePrecoDividido(){
 
+        Scanner sc = new Scanner(System.in);
+
         DecimalFormat df = new DecimalFormat("#.00");
 
-        precoDividido = precoTotal * 1/2; //Defina a fração de quanto do preço total será dividido entre os demais
+        System.out.println("Preço total: R$" + precoTotal);
+        System.out.println("Caso haja um anfitrião, qual será a fração que o mesmo irá pagar do total? (Insira o valor simplificaddo. Ex: 0.5, 1, 0 (Caso não haja anfitrião), etc)");
+        double fracao = inputFracao("Preço total: R$" + precoTotal + "\nCaso haja um anfitrião, qual será a fração que o mesmo irá pagar do total? (Insira o valor simplificaddo. Ex: 0.5, 1, etc)", sc);
+        precoDividido = precoTotal * fracao; //Defina a fração de quanto do preço total será dividido entre os demais
         precoDividido = Double.parseDouble(df.format(precoDividido).replace(",", "."));
 
     }

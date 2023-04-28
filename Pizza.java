@@ -53,8 +53,8 @@ public class Pizza implements Comparable<Pizza>{
     @Override
     public int compareTo(Pizza pizza2) {
 
-        return (int) pizza2.quantidade - (int) quantidade;
-
+        return (int) pizza2.quantidade - (int) quantidade; //Altere o atributo para definir o que você quer priorizar
+//                                                           das pizzas (Ex: Quantidade, Preço).
     }
 
 }
