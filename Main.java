@@ -1,6 +1,6 @@
 import java.util.*;
 import java.text.*;
-
+//Final Commit
 public class Main {
 
     public static boolean inputResposta(String frase, Scanner sc){
@@ -111,7 +111,7 @@ public class Main {
 
                 if (pedacosSalgadas > 0) {
 
-                    System.out.print("\nDigite seus Votos (Pizza Salgada): ");
+                    System.out.print("\nDigite seus Votos (Pizza Salgada)(Separe por  \", \"): ");
 
                     votosSalgada = new ArrayList<>(Arrays.asList(inputString("\nDigite seus Votos (Pizza Salgada): ", sc).split(", ")));
 
@@ -129,7 +129,7 @@ public class Main {
 
                 if (pedacosDoces > 0) {
 
-                    System.out.print("\nDigite seus Votos (Pizza Doce): ");
+                    System.out.print("\nDigite seus Votos (Pizza Doce)(Separe por  \", \"): ");
 
                     votosDoce = new ArrayList<>(Arrays.asList(inputString("\nDigite seus Votos (Pizza Doce): ", sc).split(", ")));
 
@@ -153,13 +153,13 @@ public class Main {
             System.out.println("Quantidade de Pizzas Salgadas: " + calculadora.getQtdPizzasSalgadas() + "\n");
             System.out.println("Total de Pedaços Doces: " + calculadora.getPedacosDoces());
             System.out.println("Quantidade de Pizzas Doces: " + calculadora.getQtdPizzasDoces() + "\n");
-//      (Descomente para mostrar quantos para saber quantos pedacos ao todo de cada sabor deram.)
-//      System.out.println("Pedaços Salgados por Sabores:");
-//      System.out.println("-----------------------\n");
-//      calculadora.showPizzasSalgadas();
-//      System.out.println("Pedaços Doces por Sabores:");
-//      System.out.println("-----------------------\n");
-//      calculadora.showPizzasDoces();
+//          (Descomente para mostrar quantos para saber quantos pedacos ao todo de cada sabor deram.)
+//          System.out.println("Pedaços Salgados por Sabores:");
+//          System.out.println("-----------------------\n");
+//          calculadora.showPizzasSalgadas();
+//          System.out.println("Pedaços Doces por Sabores:");
+//          System.out.println("-----------------------\n");
+//          calculadora.showPizzasDoces();
             System.out.println("Quantidade de Pizzas Salgadas de cada Sabor");
             System.out.println("-----------------------\n");
             calculadora.showRelacaoSalgadas();

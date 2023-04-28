@@ -1,7 +1,7 @@
 import java.math.*;
 import java.text.*;
 import java.util.*;
-
+//Final Commit
 public class Calculadora {
 
     private ArrayList<Pessoa> pessoas;
@@ -753,6 +753,7 @@ public class Calculadora {
         for(Pizza i : relacaoDePizzasDoces){
 
             precoTotal+=i.getPreco()*i.getQuantidade();
+            precoTotal = Double.parseDouble(df.format(precoTotal).replace(",", "."));
 
         }
 

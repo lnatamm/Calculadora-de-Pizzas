@@ -2,6 +2,8 @@
 Pequeno projetinho que eu fiz para fazer a contagem de quantas pizzas de cada sabor comprar baseado nos votos das 
 pessoas.
 
+•ATENÇÃO: Os votos devem ser separados por ", " (Atenção para o espaço após a vírgula), caso o contrário, estes não serão computados
+
 • Observações Importantes: Esse aplicativo foi designado para calcular quantas pizzas pedir para uma festa, de forma com 
 que NÃO FALTE PEDAÇOS PARA NINGUÉM, mesmo que isso signifique sobrar VÁRIOS PEDAÇOS, dessa forma, todos os 
 arrendodamentos são realizados PARA CIMA, isso pode resultar em um custo mais caro e sobra de comida.
